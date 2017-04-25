@@ -32,7 +32,6 @@ class TodosController < ApplicationController
   end
 
   def change_todo_status
-    binding.pry
     @todo.done = !@todo.done
     if @todo.save
       render json: @todo, status: :ok
