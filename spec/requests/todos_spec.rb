@@ -112,4 +112,8 @@ RSpec.describe 'Todos API', type: :request do
       expect(response).to have_http_status(204)
     end
   end
+
+  describe 'change_todo_status' do
+    
+  end
 end

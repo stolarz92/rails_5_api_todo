@@ -1,5 +1,5 @@
 class TodosController < ApplicationController
-  before_action :set_todo, only: [:show, :update, :destroy]
+  before_action :set_todo, only: [:show, :update, :destroy, :change_todo_status]
 
   # GET /todos
   def index
@@ -29,6 +29,16 @@ class TodosController < ApplicationController
   def destroy
     @todo.destroy
     head :no_content
+  end
+
+  def change_todo_status
+    binding.pry
+    @todo.done = !@todo.done
+    if @todo.save
+      render json: @todo, status: :ok
+    else
+      render json: { errors: @todo.errors }, status: :unprocessable_entity
+    end
   end
 
   private
