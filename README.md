@@ -1,3 +1,9 @@
+run rake db:seed
+
+User credentials:
+login: test@test.pl
+password: password
+
 # README
 
 This README would normally document whatever steps are necessary to get the
