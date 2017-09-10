@@ -16,7 +16,7 @@ class TodosController < ApplicationController
   # POST /todos
   def create
     @todo = Todo.new(todo_params)
-    @todo.created_by = current_user
+    @todo.created_by = current_user.id
     @todo.save
     json_response(@todo, :created)
   end
