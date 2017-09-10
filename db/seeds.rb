@@ -5,6 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.first_or_create(name: 'test', email: 'test@test.pl', password: 'password')
-Todo.first_or_create(title: 'first', created_by: User.first.id)
-Todo.first_or_create(title: 'second', created_by: User.first.id)
+User.find_or_create_by(name: 'test') do |user|
+   user.email =  'test@test.pl'
+   user.password = 'password'
+end
+User.find_or_create_by(name: 'test2') do |user|
+  user.email = 'test2@test.pl'
+  user.password = 'password'
+end
+Todo.find_or_create_by(title: 'first', created_by: User.first.id)
+Todo.find_or_create_by(title: 'second', created_by: User.second.id)
