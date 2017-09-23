@@ -1,0 +1,30 @@
+<div class="header clearfix">
+  <nav>
+    <ul class="nav nav-pills float-right">
+      <li class="nav-item">
+        <a routerLinkActive="active" routerLink="/home" class="nav-link">Strona główna <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a routerLinkActive="active" routerLink="/todos" class="nav-link">Todos</a>
+      </li>
+      <li class="nav-item">
+        <a routerLinkActive="active" routerLink="/login" class="nav-link">Logowanie</a>
+      </li>
+      <li class="nav-item">
+        <a routerLinkActive="active" routerLink="/register" class="nav-link">Zarejestruj</a>
+      <!--<li *ngIf="(authService.userSignedIn$ | async)" class="nav-item">-->
+        <!--<a routerLink="/todos" class="nav-link">Todos</a>-->
+      <!--</li>-->
+      <!--<li *ngIf="!(authService.userSignedIn$ | async)" class="nav-item">-->
+        <!--<a routerLink="/login" class="nav-link">Logowanie</a>-->
+      <!--</li>-->
+      <!--<li *ngIf="!(authService.userSignedIn$ | async)" class="nav-item">-->
+        <!--<a routerLink="/register" class="nav-link">Zarejestruj</a>-->
+      </li>
+      <li *ngIf="(authService.userSignedIn$ | async)" class="nav-item">
+        <a (click)="logOut()" class="nav-link">Wyloguj</a>
+      </li>
+    </ul>
+  </nav>
+  <h3 class="text-muted">ToDo App</h3>
+</div>

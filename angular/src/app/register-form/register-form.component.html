@@ -1,0 +1,51 @@
+<form class="form-signin" (ngSubmit)="onSignUpSubmit()" #f="ngForm" >
+  <h2 class="form-signin-heading">Please sign up</h2>
+  <div class="signup-input">
+    <input id="email"
+           type="email"
+           email
+           #email="ngModel"
+           name='email'
+           placeholder="Email address"
+           [(ngModel)]="signUpUser.email"
+           class="form-control"
+           required
+           >
+    <span class="alert-message" *ngIf="!email.valid && email.touched">Please enter a valid email</span>
+    <label for="email" class="sr-only">Email</label>
+  </div>
+  <div class="signup-input">
+    <input id="password"
+           type="password"
+           #password="ngModel"
+           placeholder="Password"
+           required
+           name='password'
+           [(ngModel)]="signUpUser.password"
+           class="validate form-control">
+    <label for="password" class="sr-only">Password</label>
+  </div>
+    <div class="signup-input">
+      <input id="password_confirmation"
+           type="password"
+           #passwordConfirmation="ngModel"
+           placeholder="Password Confirmation"
+           required
+           name='password_confirmation'
+           [(ngModel)]="signUpUser.passwordConfirmation"
+           class="validate form-control">
+      <label for="password_confirmation" class="sr-only">Password confirmation</label>
+      <span class="alert-message" *ngIf="(signUpUser.password != signUpUser.passwordConfirmation)
+                                          && password.touched
+                                          && passwordConfirmation.touched">
+      Passwords must match
+    </span>
+    </div>
+    <div class="col s12">
+      <button type="submit"
+              [disabled]="!(f.valid) || !(signUpUser.password == signUpUser.passwordConfirmation)"
+              class="btn btn-lg btn-primary btn-block">
+        Sign up
+      </button>
+    </div>
+</form>
